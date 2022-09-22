@@ -17,7 +17,6 @@ function createYlgy(pageid){
 	maxlevel=tmp[2];
 	var imgnum=tmp[3];
     document.body.background = path+"/background.jpg";
-	console.log(document.body.style);
 	for(i=0;i<imgnum;i++){
 		imgsrc.push(path+'/'+i+'.jpg');
 	}
@@ -138,8 +137,6 @@ function deleteImgById(id){
 
 
 function clickImg(id){
-	console.log('checkcanclick:'+id);
-	console.log(checkcanclick(id));
 	if(checkcanclick(id)==false){return;}
 	var img=document.getElementById(id);
 	var lastclick=img.getAttribute('isclick');
@@ -166,8 +163,6 @@ function checkcanclick(id){
 	var yx='l'+maxlevel+'-'+(z+1)+'-'+(i-1)+'-'+(j-1);
 
 	var leftimg=getLeftimg();
-	console.log(leftimg);
-	console.log([zs,ys,zx,yx]);
 	if(leftimg.includes(zs)||leftimg.includes(ys)||leftimg.includes(zx)||leftimg.includes(yx)){
 		return false;
 	}
