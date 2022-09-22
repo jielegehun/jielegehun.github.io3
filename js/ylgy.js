@@ -4,8 +4,8 @@ var deleteimg=[];
 var imgsrc=[];
 var maxlevel;
 
-var clickstyle='border:4px solid green;border-radius:10%';
 var disclickstyle='border:2px solid gray;border-radius:10%';
+var clickstyle='border:5px solid red;border-radius:10%';
 
 //创建图片
 function createYlgy(pageid){
