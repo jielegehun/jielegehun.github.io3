@@ -5,6 +5,8 @@ var pid=0;
 
 
 $(document).ready(function(){
+	disdbclick();
+	
 	newgame();
 });
 
@@ -13,6 +15,25 @@ $(document).ready(function(){
 function newgame(){
 	setTimeout(()=>createGame(pages[pid]),500);
 	setTimeout(()=>pid+=1,500);
+}
+
+
+function disdbclick(){
+	// 禁用双击放大
+  var lastTouchEnd = 0
+  document.documentElement.addEventListener(
+    'touchend',
+    function(event) {
+      var now = Date.now()
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault()
+      }
+      lastTouchEnd = now
+    },
+    {
+      passive: false
+    }
+  )
 }
 
 
