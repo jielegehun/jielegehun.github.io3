@@ -5,7 +5,6 @@ var imgsrc=[];
 
 //创建图片
 function createGame(pageid){
-	console.log(pageid);
 	allimg=[];
 	deleteimg=[];
 	imgsrc=[];
@@ -13,6 +12,8 @@ function createGame(pageid){
 	var maxlevel=tmp[0];
 	var path='img/'+tmp[1]
 	var imgnum=tmp[2];
+    document.body.background = path+"/background.jpg";
+	console.log(document.body.style);
 	for(i=0;i<imgnum;i++){
 		imgsrc.push(path+'/'+i+'.jpg');
 	}
@@ -117,10 +118,11 @@ function createImgById(id,src){
 	img.setAttribute('id',id);
 	img.setAttribute('class',id);
 	img.setAttribute('isclick','0');
-	img.setAttribute('style','border:2px solid gray');
+	img.setAttribute('style','border:2px solid gray;border-radius:10%');
+	// img.setAttribute('','30%');
 	img.setAttribute('onclick','clickImg("'+id+'")');
 	img.setAttribute('src',src);
-	document.body.appendChild(img);
+	document.getElementById('game').appendChild(img);
 }
 
 function test(){
@@ -138,7 +140,7 @@ function deleteImgById(id){
 function clickImg(id){
 	var img=document.getElementById(id);
 	var lastclick=img.getAttribute('isclick');
-	img.setAttribute('style','border:4px solid green');
+	img.setAttribute('style','border:4px solid green;border-radius:10%');
 	img.setAttribute('isclick','1');
 	var canDelete=checkDetele(id);
 	if(lastclick==1 && canDelete==false){
