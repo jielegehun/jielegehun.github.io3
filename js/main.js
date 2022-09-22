@@ -13,7 +13,7 @@ var startmusic=0;
 
 
 $(document).ready(function(){
-	disdbclick();
+	// disdbclick();
 	newpage();
 });
 
