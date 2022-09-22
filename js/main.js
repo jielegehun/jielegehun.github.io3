@@ -4,7 +4,7 @@
 var pages=[
 	'start',
 	'ylgy-pic2-4-9',
-	'ylgy-pic1-5-13',
+	'ylgy-pic1-5-17',
 	'single-single1',
 	'single-single2'
 ];
