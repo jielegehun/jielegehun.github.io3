@@ -3,6 +3,9 @@ var allimg=[];
 var deleteimg=[];
 var imgsrc=[];
 
+var clickstyle='border:4px solid green;border-radius:10%';
+var disclickstyle='border:2px solid gray;border-radius:10%';
+
 //创建图片
 function createGame(pageid){
 	allimg=[];
@@ -118,7 +121,7 @@ function createImgById(id,src){
 	img.setAttribute('id',id);
 	img.setAttribute('class',id);
 	img.setAttribute('isclick','0');
-	img.setAttribute('style','border:2px solid gray;border-radius:10%');
+	img.setAttribute('style',disclickstyle);
 	// img.setAttribute('','30%');
 	img.setAttribute('onclick','clickImg("'+id+'")');
 	img.setAttribute('src',src);
@@ -138,13 +141,15 @@ function deleteImgById(id){
 
 
 function clickImg(id){
+	palymusic();
+	if(checkcanclick(id)==false){return;}
 	var img=document.getElementById(id);
 	var lastclick=img.getAttribute('isclick');
-	img.setAttribute('style','border:4px solid green;border-radius:10%');
+	img.setAttribute('style',clickstyle);
 	img.setAttribute('isclick','1');
 	var canDelete=checkDetele(id);
 	if(lastclick==1 && canDelete==false){
-		img.setAttribute('style','border:0px');
+		img.setAttribute('style',disclickstyle);
 		img.setAttribute('isclick','0');
 	}
 	if(deleteimg.length>=allimg.length){
@@ -152,9 +157,13 @@ function clickImg(id){
 	}
 }
 
+function checkcanclick(id){
+	return true;
+}
+
 function disclickImg(id){
 	var img=document.getElementById(id);
-	img.setAttribute('style','border:0px solid red');
+	img.setAttribute('style',disclickstyle);
 	img.setAttribute('isclick','0');
 }
 
