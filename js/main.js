@@ -3,8 +3,8 @@
 // var pages=['3-t0-8','4-t2-8','5-t1-13'];
 var pages=[
 	'start',
-	// 'ylgy-pic2-4-8',
-	// 'ylgy-pic1-5-13',
+	'ylgy-pic2-4-8',
+	'ylgy-pic1-5-13',
 	'single-single1',
 	'single-single2'
 ];
