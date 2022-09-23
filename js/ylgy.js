@@ -2,6 +2,8 @@
 var allimg=[];
 var deleteimg=[];
 var imgsrc=[];
+var btnsrc=[];
+var btnimg=[];
 var maxlevel;
 
 var disclickstyle='border:3px solid rgb(100,100,100,0.7); border-radius:10%; opacity:1';
@@ -12,6 +14,8 @@ function createYlgy(pageid){
 	allimg=[];
 	deleteimg=[];
 	imgsrc=[];
+	btnsrc=[];
+	btnimg=[];
 	var tmp=pageid.split('-');
 	var path='img/'+tmp[1];
 	maxlevel=tmp[2];
@@ -19,6 +23,9 @@ function createYlgy(pageid){
     document.body.background = path+"/background.jpg";
 	for(i=0;i<imgnum;i++){
 		imgsrc.push(path+'/'+i+'.jpg');
+	}
+	for(i=0;i<2;i++){
+		btnsrc.push(path+'/btn'+i+'.gif');
 	}
 	createCorrect();
 }
@@ -57,6 +64,53 @@ function createCorrect(){
 		allimg.push(id);
 	}
 
+	createbtn();
+}
+
+function createbtn(){
+	var btn1='l'+maxlevel+'-'+0+'-'+maxlevel+'-'+0;
+	var src1=btnsrc[0]
+	createBtn1ById(btn1,src1)
+	btnimg.push(btn1);
+
+	var btn2='l'+maxlevel+'-'+0+'-'+maxlevel+'-'+1;
+	var src2=btnsrc[1];
+	createBtn2ById(btn2,src2);
+	btnimg.push(btn2);
+}
+
+function createBtn1ById(id,src){
+	var img=document.createElement('img');
+	img.setAttribute('id',id);
+	img.setAttribute('class',id);
+	img.setAttribute('isclick','0');
+	img.setAttribute('style',disclickstyle);
+	// img.setAttribute('','30%');
+	img.setAttribute('onclick','deleteandnewpage(1)');
+	img.setAttribute('src',src);
+	document.getElementById('game').appendChild(img);
+}
+
+function createBtn2ById(id,src){
+	var img=document.createElement('img');
+	img.setAttribute('id',id);
+	img.setAttribute('class',id);
+	img.setAttribute('isclick','0');
+	img.setAttribute('style',disclickstyle);
+	// img.setAttribute('','30%');
+	img.setAttribute('onclick','deleteandnewpage()');
+	img.setAttribute('src',src);
+	document.getElementById('game').appendChild(img);
+}
+
+function deleteandnewpage(reload=0){
+	for(img of allimg){
+		deleteImgById(img);
+	}
+	for(img of btnimg){
+		deleteImgById(img);
+	}
+	newpage(reload);
 }
 
 function getCanPut(allimg){
@@ -148,7 +202,7 @@ function clickImg(id){
 		img.setAttribute('isclick','0');
 	}
 	if(deleteimg.length>=allimg.length){
-		newpage();
+		deleteandnewpage();
 	}
 }
 

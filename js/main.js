@@ -4,7 +4,7 @@
 var pages=[
 	'start',
 	'ylgy-pic2-4-9',
-	'ylgy-pic1-5-17',
+	'ylgy-pic1-5-18',
 	'single-single1',
 	'single-single2'
 ];
@@ -19,7 +19,8 @@ $(document).ready(function(){
 
 
 //新页面
-function newpage(){
+function newpage(reload=0){
+	if(reload==1){pid-=1};
 	if(pid>=pages.length){
 		endpage();
 		return;
