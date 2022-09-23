@@ -498,8 +498,8 @@
     position: absolute;
     width: 200px;
     height: 200px;
-    margin-left: 180px;
-    margin-top: 1005.0px;
+    margin-left: 90px;
+    margin-top: 960.0px;
     z-index: 0;
 }
 
@@ -507,8 +507,17 @@
     position: absolute;
     width: 200px;
     height: 200px;
-    margin-left: 560px;
-    margin-top: 1005.0px;
+    margin-left: 380px;
+    margin-top: 960.0px;
+    z-index: 0;
+}
+
+.l5-0-5-2{ 
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    margin-left: 670px;
+    margin-top: 960.0px;
     z-index: 0;
 }
 

@@ -24,7 +24,7 @@ function createYlgy(pageid){
 	for(i=0;i<imgnum;i++){
 		imgsrc.push(path+'/'+i+'.jpg');
 	}
-	for(i=0;i<2;i++){
+	for(i=0;i<3;i++){
 		btnsrc.push(path+'/btn'+i+'.gif');
 	}
 	createCorrect();
@@ -77,6 +77,11 @@ function createbtn(){
 	var src2=btnsrc[1];
 	createBtn2ById(btn2,src2);
 	btnimg.push(btn2);
+
+	var btn3='l'+maxlevel+'-'+0+'-'+maxlevel+'-'+2;
+	var src3=btnsrc[2];
+	createBtn3ById(btn3,src3);
+	btnimg.push(btn3);
 }
 
 function createBtn1ById(id,src){
@@ -86,7 +91,7 @@ function createBtn1ById(id,src){
 	img.setAttribute('isclick','0');
 	img.setAttribute('style',disclickstyle);
 	// img.setAttribute('','30%');
-	img.setAttribute('onclick','deleteandnewpage(1)');
+	img.setAttribute('onclick','deleteAndNewpage(1)');
 	// img.setAttribute('ondblclick','');
 	img.setAttribute('src',src);
 	document.getElementById('game').appendChild(img);
@@ -99,13 +104,42 @@ function createBtn2ById(id,src){
 	img.setAttribute('isclick','0');
 	img.setAttribute('style',disclickstyle);
 	// img.setAttribute('','30%');
-	img.setAttribute('onclick','deleteandnewpage()');
+	img.setAttribute('onclick','deleteAndNewpage()');
 	// img.setAttribute('ondblclick','');
 	img.setAttribute('src',src);
 	document.getElementById('game').appendChild(img);
 }
 
-function deleteandnewpage(reload=0){
+
+function createBtn3ById(id,src){
+	var img=document.createElement('img');
+	img.setAttribute('id',id);
+	img.setAttribute('class',id);
+	img.setAttribute('isclick','0');
+	img.setAttribute('style',disclickstyle);
+	// img.setAttribute('','30%');
+	img.setAttribute('onclick','deleteAndSuperYlgy()');
+	// img.setAttribute('ondblclick','');
+	img.setAttribute('src',src);
+	document.getElementById('game').appendChild(img);
+}
+
+
+function deleteAndSuperYlgy(){
+	for(img of allimg){
+		deleteImgById(img);
+	}
+	for(img of btnimg){
+		deleteImgById(img);
+	}
+	// var level=5;
+	// //30%的生成6层
+	// if(Math.random()<0.3){level=6;}
+	var level=6;
+	setTimeout(()=>createYlgy('ylgy-super-'+level+'-10'),500);
+}
+
+function deleteAndNewpage(reload=0){
 	for(img of allimg){
 		deleteImgById(img);
 	}
