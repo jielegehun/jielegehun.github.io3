@@ -1,5 +1,5 @@
 
-
+//创建个只有一张图片的页面，没啥好说的
 function createSingle(pageid){
 	var tmp=pageid.split('-');
 	var path='img/'+tmp[1]

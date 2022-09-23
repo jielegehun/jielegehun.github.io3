@@ -1,5 +1,5 @@
 
-
+//创建开始页面
 function createStart(pageid){
 	var img=document.createElement('img');
 	img.setAttribute('id','startimg');
