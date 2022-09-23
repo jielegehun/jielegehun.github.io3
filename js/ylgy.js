@@ -87,6 +87,7 @@ function createBtn1ById(id,src){
 	img.setAttribute('style',disclickstyle);
 	// img.setAttribute('','30%');
 	img.setAttribute('onclick','deleteandnewpage(1)');
+	// img.setAttribute('ondblclick','');
 	img.setAttribute('src',src);
 	document.getElementById('game').appendChild(img);
 }
@@ -99,6 +100,7 @@ function createBtn2ById(id,src){
 	img.setAttribute('style',disclickstyle);
 	// img.setAttribute('','30%');
 	img.setAttribute('onclick','deleteandnewpage()');
+	// img.setAttribute('ondblclick','');
 	img.setAttribute('src',src);
 	document.getElementById('game').appendChild(img);
 }

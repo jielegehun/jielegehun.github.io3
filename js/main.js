@@ -8,7 +8,7 @@ var pages=[
 	'single-single1',
 	'single-single2'
 ];
-var pid=0;
+var pid=-1;
 var startmusic=0;
 
 
@@ -20,13 +20,12 @@ $(document).ready(function(){
 
 //新页面
 function newpage(reload=0){
-	if(reload==1){pid-=1};
+	if(reload==0){pid+=1};
 	if(pid>=pages.length){
 		endpage();
 		return;
 	}
 	var tmp=pages[pid].split('-');
-	// setTimeout(()=>createylgy(pages[pid]),500);
 	if(tmp[0]=='start'){
 		setTimeout(()=>createStart(pages[pid]),500);
 	}else if(tmp[0]=='ylgy'){
@@ -34,7 +33,7 @@ function newpage(reload=0){
 	}else if(tmp[0]=='single'){
 		setTimeout(()=>createSingle(pages[pid]),500);
 	}
-	setTimeout(()=>pid+=1,500);
+	// setTimeout(()=>pid+=1,500);
 }
 
 function endpage(){

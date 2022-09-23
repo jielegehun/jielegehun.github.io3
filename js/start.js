@@ -7,6 +7,8 @@ function createStart(pageid){
 	img.setAttribute('src','img/start/start.gif');
 	img.setAttribute('onclick','clickStart()');
 	document.getElementById('game').appendChild(img);
+	// document.body.style.backgroundColor='rgb(199,132,92)';
+	document.body.background='img/start-background.jpg';
 }
 
 

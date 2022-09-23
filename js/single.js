@@ -11,6 +11,7 @@ function createSingle(pageid){
 	img.setAttribute('onclick','clickSingle()');
 	document.getElementById('game').appendChild(img);
 	document.body.background='';
+	document.body.style.backgroundColor='';
 }
 
 
