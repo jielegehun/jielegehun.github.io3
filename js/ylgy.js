@@ -238,7 +238,7 @@ function clickImg(id){
 		img.setAttribute('isclick','0');
 	}
 	if(deleteimg.length>=allimg.length){
-		deleteandnewpage();
+		deleteAndNewpage();
 	}
 }
 
