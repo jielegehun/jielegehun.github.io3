@@ -14,6 +14,7 @@ function createStart(pageid){
 
 function clickStart(){
 	deleteImgById('startimg');
+	document.body.background='';
 	playmusic();
 	newpage();
 }

@@ -15,7 +15,11 @@ var pages=[
 	'ylgy-pic2-5-17',
 	// 'ylgy-pic1-6-17', //这个超高难度的就不放在主流程里面了，放一个"挑战高难度"的按钮链接过来好了
 	'single-single1',
-	'single-single2'
+	'single-single2',
+	'single-single3',
+	'single-single4',
+	'single-single5',
+	'single-single6',
 ];
 
 //检查是否开始放音乐了，如果已经开始放了，就不触发播放了。之前没有这个变量，每次点击都会放歌，导致好几首歌同时在放
