@@ -146,7 +146,7 @@ function deleteAndSuperYlgy(){
 	// //30%概率的生成6层
 	// if(Math.random()<0.3){level=6;}
 	var level=6;//算了，还是直接生成6层的吧
-	setTimeout(()=>createYlgy('ylgy-super-'+level+'-10'),500);
+	setTimeout(()=>createYlgy('ylgy-super-'+level+'-14'),500);
 }
 
 //清空图片，生成下一个页面
