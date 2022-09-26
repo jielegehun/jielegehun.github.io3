@@ -3,12 +3,12 @@
  * 用来控制页面顺序、放音乐
 */
 
-//页面id，进入newpage()的时候会自动加一，所以相当于从0开始
-var pid=-1;
-
-//页面的展示顺序，start表示开始界面，ylgy是羊了个羊游戏界面，single表示只有一个图片的界面
-//第二段表示图片文件夹路径。第三段表示是个n×n的游戏，第4段表示这个文件夹下有几张图片
-//其实可以写个自动检测文件夹有多少张图片的方法，但没必要，看一眼就能写上的数字，我费劲写个方法干嘛？
+/**
+ * 页面的展示顺序，start表示开始界面，ylgy是羊了个羊游戏界面，single表示只有一个图片的界面
+ *1、如果开头是ylgy，则第二段表示图片文件夹路径，第三段表示是个n×n的棋盘，第4段表示这个文件夹下有几张图片
+ *2、如果卡头是single，则第二段表示图片文件夹路径
+ *ps:其实可以写个自动检测文件夹有多少张图片的方法，但没必要，看一眼就能写上的数字，我费劲写个方法干嘛？
+*/
 var pages=[
 	'start',//为啥需要个开始页面呢，因为现在不允许点进网站就直接放音乐，必须在用户操作一下之后才能放音乐，所以加个开始页面
 	'ylgy-pic1-4-9',
@@ -22,17 +22,26 @@ var pages=[
 	'single-single6',
 ];
 
-//检查是否开始放音乐了，如果已经开始放了，就不触发播放了。之前没有这个变量，每次点击都会放歌，导致好几首歌同时在放
-var startmusic=0;
+
+//是否需要放音乐
+var needmusic=1;
+
 
 //本来只想放一首歌的，结果女朋友在好几首歌之间选择困难症了，所以整个数组存好几首歌，然后随机播放好了
 var songs=[
-	//音乐下载网站 tools.liumingye.cn/music/
+	//音乐下载网站  tools.liumingye.cn/music/
 	//《娃娃脸》-后弦
 	'http://freetyst.nf.migu.cn/public/ringmaker01/n4/swsj/2012/09/2012%E5%B9%B49%E6%9C%884%E6%97%A5/2012%E5%B9%B408%E6%9C%8827%E6%97%A5%E5%A4%A9%E6%B5%A9%E7%9B%9B%E4%B8%96%E5%86%85%E5%AE%B9%E5%87%86%E5%85%A515%E9%A6%96/%E5%85%A8%E6%9B%B2%E4%B8%8B%E8%BD%BD/MP3_128_16_Stero/%E5%A8%83%E5%A8%83%E8%84%B8-%E5%90%8E%E5%BC%A6.mp3',
 	//《有点甜》-汪苏泷
 	'http://freetyst.nf.migu.cn/public/product07/2018/02/05/2012%E5%B9%B46%E6%9C%8825%E6%97%A5%E7%B4%A7%E6%80%A5%E5%87%86%E5%85%A5%E5%94%90%E7%BE%BD%E6%96%87%E5%8C%965%E9%A6%96/%E6%AD%8C%E6%9B%B2%E4%B8%8B%E8%BD%BD/MP3_128_16_Stero/%E6%9C%89%E7%82%B9%E7%94%9C-%E6%B1%AA%E8%8B%8F%E6%B3%B7%2BBY2.mp3',
 ]
+
+
+//页面id，进入newpage()的时候会自动加一，所以相当于从0开始
+var pid=-1;
+
+
+
 
 //自动打开第一个页面
 $(document).ready(function(){
@@ -58,6 +67,7 @@ function newpage(reload=0){
 	}
 }
 
+
 //展示最后的页面
 function endpage(){
 	var img=document.createElement('img');
@@ -67,16 +77,16 @@ function endpage(){
 	document.getElementById('game').appendChild(img);
 }
 
+
 //接着奏乐接着舞！
 function playmusic(){
-	if(startmusic==0){
+	if(needmusic==1){
 		var rand=Math.floor(Math.random()*songs.length);//随机选音乐
 		var mp3 = new Audio(songs[rand])
 		var duration=mp3.duration;
 		mp3.loop=true;//单曲循环
 		mp3.volume=0.7;
 		mp3.play();
-		startmusic=1;
 		//打开页面的时候就已经确定是哪首歌了，不会进行列表循环。其实可以做成列表循环，但没必要，我估计一首歌唱不完就把页面浏览完了
 	}
 }
@@ -99,6 +109,8 @@ function disdbclick(){
     }
   )
 }
+
+
 
 /**
  * 如果你想问我为什么写这么多注释，是个人的代码习惯好吗？
