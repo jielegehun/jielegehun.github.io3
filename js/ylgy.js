@@ -27,8 +27,8 @@ function createYlgy(pageid){
 	var path='img/'+tmp[1];
 	maxlevel=tmp[2];
 	var imgnum=tmp[3];
-    // document.body.background = path+"/background.jpg";
-    document.body.background = "img/ylgy-background.jpg";
+    document.body.background = path+"/ylgy-background.jpg";
+    // document.body.background = "img/ylgy-background.jpg";
 	for(i=0;i<imgnum;i++){
 		imgsrc.push(path+'/'+i+'.jpg');
 	}
