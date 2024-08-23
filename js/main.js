@@ -20,7 +20,29 @@ var pages=[
 	'single-single4',
 	'single-single5',
 	'single-single6',
+]
+
+var storypages=[
+	// 'single-single1',
+	'single-single2',
+	'single-single3',
+	'single-single4',
+	'single-single5',
+	'single-single6',
 ];
+
+var ylgypages=[
+	'ylgy-pic1-4-9',
+	'ylgy-pic2-5-19',
+];
+
+var g2048pages=[
+	'2048'
+];
+var startimgs=['img/start/start-0.jpg','img/start/start-1.jpg','img/start/start-2.jpg'];
+var startpages=[storypages,ylgypages,g2048pages];
+
+
 
 
 //是否需要放音乐
@@ -46,8 +68,38 @@ var pid=-1;
 //自动打开第一个页面
 $(document).ready(function(){
 	// disdbclick();
-	newpage();
+	createStart(startpages,startimgs);
 });
+
+
+
+function init(which){
+	playmusic();
+
+	for(i=0;i<startpages.length;i++){
+	 	var img=document.createElement('img');
+	 	var id='startimg-'+i;
+	 	deleteImgById(id);
+	};
+
+	pages=startpages[which];
+	newpage();
+}
+
+
+function createpage(pagestr){
+	var tmp=pagestr.split('-');
+	if(tmp[0]=='start'){
+		setTimeout(()=>createStart(pages[pid]),500);
+	}else if(tmp[0]=='single'){
+		setTimeout(()=>gamesingle.createSingle(pages[pid]),500);
+	}else if(tmp[0]=='ylgy'){
+		setTimeout(()=>createYlgy(pages[pid]),500);
+	}else if(tmp[0]=='2048'){
+		setTimeout(()=>game2048.create2048(pages[pid]),500);
+	}
+
+}
 
 
 //开启新页面，如果relaoad=0，则按pid打开下一个页面；如果reload=1，则重新打开当前页面
@@ -60,10 +112,12 @@ function newpage(reload=0){
 	var tmp=pages[pid].split('-');
 	if(tmp[0]=='start'){
 		setTimeout(()=>createStart(pages[pid]),500);
+	}else if(tmp[0]=='single'){
+		setTimeout(()=>gamesingle.createSingle(pages[pid]),500);
 	}else if(tmp[0]=='ylgy'){
 		setTimeout(()=>createYlgy(pages[pid]),500);
-	}else if(tmp[0]=='single'){
-		setTimeout(()=>createSingle(pages[pid]),500);
+	}else if(tmp[0]=='2048'){
+		setTimeout(()=>game2048.create2048(pages[pid]),500);
 	}
 }
 
@@ -111,24 +165,3 @@ function disdbclick(){
 }
 
 
-
-/**
- * 如果你想问我为什么写这么多注释，是个人的代码习惯好吗？
- * 当然不是！
- * 我是想，万一这个页面火了呢，万一火了之后有人看注释呢，很多火了的代码注释里面都有有意思的注释，这可能就是一种 程序员的浪漫吧
- * 万一没火呢？
- * 那就我自己 敝扫自珍 好了
- * 那就我自己 孤芳自赏 好了
- * 那就我自己 顾影自怜 好了
- * o(╥﹏╥)o
- * 
- * 搜一下第三个字是自的成语
- * 
-    string = '''
-    自作自受 故步自封 居功自傲 悠然自得 泰然自若 自言自语 情不自禁 咎由自取 自暴自弃 沾沾自喜 
-    引咎自责 监守自盗 人人自危 无地自容 放任自流 不打自招 不攻自破 不能自拔 作法自毙 作茧自缚
-    自高自大 玩火自焚 自吹自捧 刚愎自用 自吹自擂 扪心自问 自怨自艾 自生自灭 自私自利 固步自封
-    洁身自爱 庸人自扰 运用自如 逍遥自在 应付自如 自卖自夸 悠游自在 狂妄自大 怡然自得 矜功自伐
-    '''
-    for str in filter(lambda x: x != '', string.replace('\n', ' ').split(' ')): print '那就我自己 %s 好了' % str.strip()
-*/
